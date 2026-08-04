@@ -1,0 +1,1864 @@
+/*? ESTILOS — FIRMA DE ABOGADOS MjA
+    /*?     Mejía & Asociados Estudio Jurídico
+    /*?     TÉCNICAS QUE USAMOS PARA ETA PAGINA WEB:
+    /*?    CSS Grid (hero, áreas, hitos, método, conferencias, contacto, pie)
+    /*?    Flexbox (encabezado, equipo, botones, pie nav)
+    /*?    Pseudoelementos ::before y ::after
+    /*?    Pseudoclases :hover, :focus, :focus-visible, :last-child
+    /*?    Variables CSS en :root
+    /*?   Responsividad con 5 breakpoints
+    /*?   prefers-reduced-motion para accesibilidad
+
+    PROHIBICIONES CUMPLIDAS:
+            Sin position (excepto donde es imprescindible)
+            Sin z-index
+            Sin frameworks CSS
+            Sin JavaScript
+            Sin float
+            Sin br para separar elementos
+            Sin tabla para maquetar
+*/
+
+
+/*!1. VARIABLES CSS*/
+    /**     Aquí se definen todos los colores, fuentes y espaciados
+    /**     del sitio. Se usan con var(--nombre) en todo el CSS.
+*/
+:root {
+    --color-azul:          #0B1F3A;
+    --color-azul-medio:    #112847;
+    --color-gris:          #D9D9D9;
+    --color-gris-suave:    #F2F2F2;
+    --color-blanco:        #FFFFFF;
+    --color-dorado:        #B08D57;
+    --color-dorado-claro:  #C9A96E;
+    --color-dorado-oscuro: #8A6B3A;
+    --color-texto:         #1a1a1a;
+    --color-texto-suave:   #555555;
+
+    --fuente-principal:  'Cormorant Garamond', Georgia, serif;
+    --fuente-versalitas: 'Cormorant SC', Georgia, serif;
+
+    --espaciado-xs:  8px;
+    --espaciado-s:   16px;
+    --espaciado-m:   32px;
+    --espaciado-l:   64px;
+    --espaciado-xl:  100px;
+
+    --padding-lateral: 80px;
+
+    --line-height-body:   1.7;
+    --line-height-titulo: 1.2;
+    --line-height-texto:  1.65;
+
+    --sombra-tarjeta:       0 4px 30px rgba(11, 31, 58, 0.07);
+    --sombra-tarjeta-hover: 0 20px 60px rgba(11, 31, 58, 0.15);
+
+    --transicion: 0.35s ease;
+}
+
+
+
+/*!2. RESET Y BASE
+    /**     Elimina márgenes y padding por defecto del navegador.
+    /**     box-sizing: border-box hace que padding y border no sumen al ancho. */
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+html {
+    scroll-behavior: smooth;
+    
+    
+}
+
+body {
+    font-family: var(--fuente-principal);
+    color: var(--color-texto);
+    background-color: var(--color-blanco);
+    font-size: 18px;
+    line-height: var(--line-height-body);
+    overflow-x: hidden;
+    margin: 0;
+    
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    background-color: transparent;
+    height: 50px;
+    
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/*!3. UTILIDADES
+    /** Clases reutilizables en varias secciones del sitio.*/
+
+.etiqueta-seccion {
+    font-family: var(--fuente-versalitas);
+    font-size: 20px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--color-dorado);
+    margin-bottom: var(--espaciado-xs);
+    display: block;
+}
+
+.etiqueta-seccion--clara {
+    color: var(--color-dorado-claro);
+    
+}
+
+
+/*!4. BOTONES
+    /**      Dos estilos: principal (fondo dorado) y secundario (borde blanco).
+    /**      El ::before de boton-principal crea el efecto de barrido al hover.*/
+
+.boton-principal {
+    display: inline-block;
+    font-family: var(--fuente-versalitas);
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    background-color: var(--color-dorado);
+    background-image: linear-gradient(to right, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.15) 100%);
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    color: var(--color-blanco);
+    border: none;
+    padding: 18px 44px;
+    cursor: pointer;
+    transition: background-color var(--transicion), transform var(--transicion), background-size var(--transicion);
+    overflow: hidden;
+}
+
+.boton-principal:hover {
+    background-color: var(--color-dorado-oscuro);
+    background-size: 100% 100%;
+    transform: translateY(-2px);
+}
+
+.boton-secundario {
+    display: inline-block;
+    font-family: var(--fuente-versalitas);
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: var(--color-blanco);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 18px 44px;
+    cursor: pointer;
+    transition: border-color var(--transicion), color var(--transicion), background-color var(--transicion);
+}
+
+.boton-secundario:hover {
+    border-color: var(--color-dorado);
+    color: var(--color-dorado);
+    background-color: rgba(176, 141, 87, 0.08);
+}
+
+.boton-principal--formulario {
+    width: 100%;
+    padding: 18px;
+    margin-top: var(--espaciado-s);
+    font-size: 14px;
+}
+
+
+/*!5. ENCABEZADO
+    /**      Barra superior con logo y navegación.
+    /**      Menú hamburguesa: checkbox invisible controla la visibilidad del nav
+    /**      con el selector CSS: input:checked - nav*/
+
+.encabezado {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-azul);
+    border-bottom: 1px solid transparent;
+    border-image: linear-gradient(to right, transparent, var(--color-dorado), transparent) 1;
+}
+
+.encabezado__marca {
+    display: flex;
+    align-items: center;
+    gap: var(--espaciado-s);
+}
+
+.encabezado__logo-banner {
+    height: 60px; /* Reducido ligeramente para mayor elegancia */
+    width: auto;
+    display: block;
+    margin-left: 70px;
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.15)); /* Añade relieve y definición */
+    transition: transform var(--transicion);
+}
+.encabezado__logo-banner:hover {
+    transform: scale(1.02); 
+}
+
+.encabezado__nav {
+    display: flex;
+    gap: 44px;
+    margin-right: 50px;
+}
+
+.enlace-nav {
+    font-family: var(--fuente-versalitas);
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+    padding-bottom: 4px;
+    border-bottom: 1px solid transparent;
+    transition: color var(--transicion), border-color var(--transicion);
+}
+
+.enlace-nav:hover {
+    color: var(--color-dorado);
+    border-bottom-color: var(--color-dorado);
+}
+
+
+.menu-activo {
+    display: none;
+}
+
+.menu-hamburguesa {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: var(--espaciado-xs);
+}
+
+.menu-hamburguesa span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background-color: var(--color-blanco);
+    transition: transform var(--transicion), opacity var(--transicion);
+}
+
+
+/*!6. HERO / INICIO |  SECCIÓN 2 HTML
+    /**      Técnica principal: Grid de 1 sola celda (grid-column: 1 / grid-row: 1)
+    /**      para apilar video, degradado, patrón, contenido y métricas
+    /**      sin usar position: absolute.
+    /**      El orden en el HTML determina cuál capa queda al frente.*/
+
+.inicio {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    width: 100%;
+    height: 100vh;
+    min-height: 500px;
+    overflow: hidden;
+    align-items: center;
+}
+
+/*? Contenedor del video también es un grid de 1 celda
+   /*? para apilar: video + degradado + patrón */
+.inicio__contenedor-video {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.inicio__video-fondo {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/*? Degradado negro de izquierda a derecha para oscurecer el video */
+.inicio__degradado {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 2, 1) 0%,
+        rgba(0, 0, 0, 0.7) 40%,
+        rgba(0, 0, 0, 0.3) 70%,
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+
+/*? Contenido principal (título + botones) encima de las capas anteriores */
+.inicio__contenido {
+    grid-column: 1;
+    grid-row: 1;
+    color: var(--color-blanco);
+    max-width: 780px;
+    padding-left: var(--padding-lateral);
+    padding-right: 40px;
+    align-self: center;
+    margin-bottom: 200px;
+}
+
+/*? ::before agrega la línea dorada antes del texto de la etiqueta */
+.inicio__etiqueta {
+    font-family: var(--fuente-versalitas);
+    font-size: 20px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--color-dorado);
+    margin-bottom: 20px;
+    display: block;
+}
+
+.inicio__etiqueta::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background-color: var(--color-dorado);
+    margin-right: 12px;
+    vertical-align: middle;
+    opacity: 0.7;
+}
+
+.inicio__banner {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 3px;
+    margin-bottom: 24px;
+    opacity: 0.6;
+}
+
+.inicio__banner svg {
+    width: 280px;
+    height: auto;
+}
+
+.banner-linea {
+    width: 30px;
+    height: 1px;
+}
+
+.inicio__logo {
+    width: 50px;
+    object-fit: contain;
+    margin-left: 50px;
+}
+
+.inicio__titulo {
+    font-size: 62px;
+    font-weight: 300;
+    line-height: var(--line-height-titulo);
+    margin-bottom: 28px;
+    font-style: italic;
+}
+
+.inicio__descripcion {
+    font-size: 18px;
+    font-weight: 300;
+    opacity: 0.8;
+    margin-bottom: 44px;
+    max-width: 520px;
+    line-height: 1.75;
+}
+
+.inicio__botones {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/*? Métricas flotantes en la esquina inferior derecha */
+.inicio__metricas {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end;
+    justify-self: end;
+    margin-bottom: 48px;
+    margin-right: var(--padding-lateral);
+    display: flex;
+    gap: 0;
+    border: 1px solid rgba(176, 141, 87, 0.25);
+}
+
+.inicio__metrica {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 28px;
+    margin-bottom: 25px;
+    border-right: 1px solid rgba(176, 141, 87, 0.2);
+}
+
+/*? :last-child elimina el borde derecho de la última métrica */
+.inicio__metrica:last-child {
+    border-right: none;
+}
+
+.inicio__metrica-numero {
+    font-family: var(--fuente-versalitas);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--color-dorado);
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.inicio__metrica-texto {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    font-family: var(--fuente-versalitas);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+
+    /* !7. ÁREAS DE PRÁCTICA
+/* !7. ÁREAS DE PRÁCTICA
+   * Concepto "El Expediente": cada área se presenta como una ficha
+   * de expediente legal -> número de caso, cuerpo descriptivo y un
+   * pie tipo "cierre de documento" donde viven honorarios + CTA.
+   * El pie es el elemento que debe llamar la atención del cliente
+   * para avanzar hacia la contratación, por eso siempre es visible
+   * (no depende de :hover, que no existe en pantallas táctiles).
+   *
+   * Restricción de construcción: esta hoja NO usa la propiedad
+   * "display" en ningún selector. El acomodo en columnas se logra
+   * con float + box-sizing, y la alineación interna de cada fila
+   * (cabecera, pie) se logra con float + position, no con flex/grid.
+*/
+
+.areas {
+    background-color: var(--color-azul);
+    padding: var(--espaciado-xl) var(--padding-lateral);
+    overflow: hidden;
+}
+
+.areas__encabezado {
+    text-align: center;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--espaciado-l);
+}
+
+.areas__titulo {
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--color-blanco);
+    font-style: italic;
+    margin-top: 14px;
+    margin-bottom: 18px;
+    line-height: var(--line-height-titulo);
+}
+
+.areas__subtitulo {
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 300;
+}
+
+/* ============================================
+   CUADRÍCULA — 4 columnas con float
+============================================ */
+.areas__cuadricula {
+    position: relative;
+    background-color: rgba(176, 141, 87, 0.12);
+    overflow: hidden;
+}
+
+.ficha {
+    position: relative;
+    float: left;
+    width: 25%;
+    min-height: 360px;
+    box-sizing: border-box;
+    background-color: var(--color-azul);
+    cursor: default;
+    overflow: hidden;
+    will-change: transform;
+    border-left: 2px solid transparent;
+    border-right: 1px solid rgba(176, 141, 87, 0.12);
+    border-bottom: 1px solid rgba(176, 141, 87, 0.12);
+    transition: background-color var(--transicion), transform var(--transicion), border-left-color var(--transicion);
+}
+
+.ficha:hover {
+    background-color: rgba(176, 141, 87, 0.07);
+    transform: translateY(-3px);
+    border-left-color: var(--color-dorado);
+}
+
+/*? El pie se ancla al fondo absoluto de la ficha (no al flujo del
+    contenido), así todas las fichas de una fila cierran exactamente
+    a la misma altura sin necesitar flex/grid para igualarlas. */
+.ficha__cuerpo {
+    padding: 40px 30px 130px;
+}
+
+/* ----- Cabecera: expediente + icono, alineados con float ----- */
+.ficha__cabecera {
+    position: relative;
+    min-height: 32px;
+    margin-bottom: 18px;
+    overflow: hidden;
+}
+
+.ficha__expediente {
+    float: left;
+    font-family: var(--fuente-versalitas);
+    font-size: 16px;
+    letter-spacing: 3px;
+    color: var(--color-dorado);
+    opacity: 0.7;
+    line-height: 32px;
+}
+
+.ficha__icono {
+    float: right;
+    width: 32px;
+    height: 32px;
+    opacity: 0.7;
+    transition: opacity var(--transicion);
+}
+
+.ficha:hover .ficha__icono {
+    opacity: 1;
+}
+
+.ficha__nombre {
+    clear: both;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--color-blanco);
+    margin-bottom: 12px;
+    font-style: italic;
+    line-height: 1.3;
+}
+
+.ficha__descripcion {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 300;
+    line-height: var(--line-height-texto);
+}
+
+
+.ficha__pie {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 8px 8px;
+    background-color: rgba(176, 141, 87, 0.04);
+    overflow: hidden;
+    transition: background-color var(--transicion), border-top-color var(--transicion);
+}
+
+.ficha:hover .ficha__pie {
+    background-color: rgba(176, 141, 87, 0.1);
+    border-top-color: rgba(176, 141, 87, 0.5);
+}
+
+.ficha__honorarios {
+    float: left;
+    max-width: 60%;
+}
+
+.ficha__honorarios-etiqueta {
+    font-family: var(--fuente-versalitas);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.45);
+    white-space: nowrap;
+    margin: 0 0 2px;
+}
+
+.ficha__precio {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-dorado);
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+/*? CTA siempre visible: en táctil no hay hover. */
+.ficha__cta {
+    float: right;
+    position: relative;
+    font-family: var(--fuente-versalitas);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--color-dorado);
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 9px 30px 9px 14px;
+    border: 1px solid rgba(176, 141, 87, 0.5);
+    border-radius: 2px;
+    transition: background-color var(--transicion), color var(--transicion), border-color var(--transicion);
+}
+
+.ficha__cta svg {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    width: 13px;
+    height: 13px;
+    margin-top: -6.5px;
+    transition: transform var(--transicion);
+}
+
+.ficha:hover .ficha__cta,
+.ficha__cta:hover,
+.ficha__cta:focus-visible {
+    background-color: var(--color-dorado);
+    color: var(--color-azul);
+    border-color: var(--color-dorado);
+}
+
+.ficha__cta:hover svg,
+.ficha__cta:focus-visible svg {
+    transform: translateX(3px);
+}
+
+.ficha__cta:focus-visible {
+    outline: 2px solid var(--color-dorado);
+    outline-offset: 3px;
+}
+
+
+
+/*!8. EQUIPO LEGAL
+   Flexbox con wrap para las 4 tarjetas.
+   Dentro de cada tarjeta: Grid de 1 celda para superponer
+   ::before (texto MjA de fondo), imagen, velo dorado y badge de años.
+*/
+
+.equipo {
+    padding: var(--espaciado-xl) var(--padding-lateral);
+    background-color: var(--color-gris-suave);
+}
+
+.equipo__encabezado {
+    text-align: center;
+    margin-bottom: var(--espaciado-l);
+}
+
+.equipo__titulo {
+    font-size: 48px;
+    font-weight: 400;
+    color: var(--color-azul);
+    font-style: italic;
+    margin-top: 14px;
+    margin-bottom: 14px;
+}
+
+.equipo__subtitulo {
+    font-size: 20px;
+    color: var(--color-texto);
+    font-weight: 300;
+}
+
+.equipo__cuadricula {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tarjeta-abogado {
+    flex: 0 1 280px;
+    background-color: var(--color-blanco);
+    overflow: hidden;
+    box-shadow: var(--sombra-tarjeta);
+    transition: transform var(--transicion), box-shadow var(--transicion);
+    will-change: transform;
+}
+
+.tarjeta-abogado:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--sombra-tarjeta-hover);
+}
+
+/*? Grid de 1 celda: apila ::before + imagen + velo + badge */
+.tarjeta-abogado__imagen-contenedor {
+    overflow: hidden;
+    height: 300px;
+    background-color: var(--color-azul-medio);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+/*? ::before pone el texto "MjA" de fondo muy tenue */
+.tarjeta-abogado__imagen-contenedor::before {
+    content: 'MjA';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--fuente-versalitas);
+    font-size: 80px;
+    color: rgba(176, 141, 87, 0.1);
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.tarjeta-abogado__imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transicion);
+    background-color: transparent;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.tarjeta-abogado:hover .tarjeta-abogado__imagen {
+    transform: scale(1.05);
+}
+
+/*? Velo dorado translúcido que aparece en hover */
+.tarjeta-abogado__velo {
+    grid-column: 1;
+    grid-row: 1;
+    background-color: rgba(176, 141, 87, 0);
+    transition: background-color var(--transicion);
+}
+
+.tarjeta-abogado:hover .tarjeta-abogado__velo {
+    background-color: rgba(176, 141, 87, 0.12);
+}
+
+/*? Badge de años: align-self y justify-self lo ubican sin position */
+.tarjeta-abogado__anios {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end;
+    justify-self: end;
+    margin: 0 16px 16px 0;
+    background-color: var(--color-azul);
+    border: 1px solid rgba(176, 141, 87, 0.4);
+    padding: 8px 12px;
+    text-align: center;
+}
+
+.tarjeta-abogado__anios span {
+    display: block;
+    font-family: var(--fuente-versalitas);
+    font-size: 18px;
+    color: var(--color-dorado);
+    font-weight: 600;
+    line-height: 1;
+}
+
+.tarjeta-abogado__anios small {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 3px;
+}
+
+.tarjeta-abogado__info {
+    padding: 24px 22px;
+    border-top: 2px solid var(--color-dorado);
+}
+
+.tarjeta-abogado__nombre {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--color-azul);
+    margin-bottom: 5px;
+}
+
+.tarjeta-abogado__cargo {
+    font-family: var(--fuente-versalitas);
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: var(--color-dorado-oscuro);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.tarjeta-abogado__especialidad {
+    font-size: 17px;
+    color: var(--color-texto-suave);
+    font-weight: 300;
+}
+
+
+/*! 9. HITOS / CASOS DESTACADOS
+   /**Grid de 4 columnas con separadores dorados (mismo truco de gap).
+   /**El ornamento se anima en hover cambiando su width con transition.
+*/
+
+.hitos {
+    background-color: var(--color-azul);
+    padding: var(--espaciado-xl) var(--padding-lateral);
+    overflow: hidden;
+    background-image: radial-gradient(circle, rgba(176, 141, 87, 0.05) 0%, transparent 40%);
+    background-size: 600px 600px;
+    background-repeat: no-repeat;
+    background-position: top -200px right -200px;
+}
+
+.hitos__encabezado {
+    text-align: center;
+    margin-bottom: var(--espaciado-l);
+}
+
+.hitos__titulo {
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--color-blanco);
+    font-style: italic;
+    margin-top: 14px;
+}
+
+.hitos__cuadricula {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background-color: rgba(176, 141, 87, 0.15);
+}
+
+.tarjeta-hito {
+    background-color: var(--color-azul);
+    padding: 52px 36px;
+    text-align: center;
+    transition: background-color var(--transicion);
+    overflow: hidden;
+}
+
+.tarjeta-hito:hover {
+    background-color: rgba(176, 141, 87, 0.07);
+}
+
+/*? El ornamento es una línea que se expande en hover */
+.tarjeta-hito__ornamento {
+    display: block;
+    width: 32px;
+    height: 1px;
+    background-color: var(--color-dorado);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 24px;
+    opacity: 0.5;
+    transition: width var(--transicion), opacity var(--transicion);
+}
+
+.tarjeta-hito:hover .tarjeta-hito__ornamento {
+    width: 60px;
+    opacity: 1;
+}
+
+.tarjeta-hito__cifra {
+    display: block;
+    font-family: var(--fuente-versalitas);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--color-dorado);
+    margin-bottom: 16px;
+    line-height: var(--line-height-titulo);
+}
+
+.tarjeta-hito__descripcion {
+    font-size: 19px;
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 300;
+    line-height: var(--line-height-texto);
+}
+
+
+/*! 10. MÉTODO (4 pasos)
+   /**Grid de 4 columnas SIN gap. Los pasos se separan con border-right.
+   /**En móvil el border-right se convierte en border-bottom.
+*/
+
+.metodo {
+    padding: var(--espaciado-xl) var(--padding-lateral);
+    background-color: var(--color-blanco);
+}
+
+.metodo__encabezado {
+    text-align: center;
+    margin-bottom: var(--espaciado-l);
+}
+
+.metodo__titulo {
+    font-size: 48px;
+    font-weight: 400;
+    color: var(--color-azul);
+    font-style: italic;
+    margin-top: 14px;
+}
+
+.metodo__pasos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.paso {
+    text-align: center;
+    padding: 40px 28px;
+    border-right: 1px solid var(--color-gris);
+    transition: background-color var(--transicion);
+    will-change: background-color;
+}
+
+/*? :last-child elimina el borde derecho del último paso */
+.paso:last-child {
+    border-right: none;
+}
+
+.paso:hover {
+    background-color: var(--color-gris-suave);
+}
+
+/*? Número grande muy transparente, se vuelve más visible en hover */
+.paso__numero {
+    font-family: var(--fuente-versalitas);
+    font-size: 72px;
+    font-weight: 600;
+    color: var(--color-dorado);
+    opacity: 0.12;
+    line-height: 1;
+    margin-bottom: var(--espaciado-s);
+    transition: opacity var(--transicion);
+}
+
+.paso:hover .paso__numero {
+    opacity: 0.35;
+}
+
+.paso__nombre {
+    font-size: 25px;
+    font-weight: 500;
+    color: var(--color-azul);
+    margin-bottom: 12px;
+    font-style: italic;
+}
+
+.paso__descripcion {
+    font-size: 19px;
+    color: var(--color-texto-suave);
+    font-weight: 300;
+    line-height: var(--line-height-texto);
+}
+
+
+/*!11. EMPRESAS ASESORADAS
+   /**Flexbox con wrap. Fondo con gradiente vertical de blanco a azul
+   /**para crear transición visual entre sección método y conferencias.
+*/
+
+.clientes {
+    padding: 70px 0;
+    background: linear-gradient(
+        to bottom,
+        var(--color-blanco) 0%,
+        #F7F5F1 30%,
+        #E5D8C3 55%,
+        #C9A96E 72%,
+        var(--color-azul) 100%
+    );
+    overflow: hidden;
+}
+ 
+.clientes__titulo {
+    text-align: center;
+    font-family: var(--fuente-versalitas);
+    font-size: 19px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    color: var(--color-dorado);
+}
+ 
+.clientes__subtitulo {
+    text-align: center;
+    max-width: 680px;
+    margin: -32px auto 60px;
+    font-size: 23px;
+    font-weight: 300;
+    color: var(--color-texto-suave);
+    line-height: var(--line-height-texto);
+}
+ 
+
+ 
+.clientes__pista {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: desplazamiento-logos 32s linear infinite;
+}
+ 
+.clientes__pista:hover {
+    animation-play-state: paused;
+}
+ 
+@keyframes desplazamiento-logos {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+ 
+.cliente-card {
+    flex: 0 0 auto;
+    width: 200px;
+    height: 130px;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 24px;
+    cursor: pointer;
+}
+ 
+.clientes__logo {
+    max-width: 100%;
+    max-height: 50px;
+    object-fit: contain;
+    opacity: 0.85;
+    transition: opacity var(--transicion), transform var(--transicion);
+}
+ 
+.cliente-card:hover .clientes__logo {
+    opacity: 1;
+    transform: scale(1.06);
+}
+
+
+/*! 12. CONFERENCIAS
+   /** Grid de 3 columnas y 2 filas.
+   /**Video principal ocupa las 3 columnas con grid-column: 1 / 4.
+   /**El badge "Con Audio" se superpone al video con grid de 1 celda.
+*/
+
+.conferencias {
+    padding: var(--espaciado-xl) var(--padding-lateral);
+    background-color: var(--color-azul);
+}
+
+.conferencias__encabezado {
+    text-align: center;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--espaciado-l);
+}
+
+.conferencias__titulo {
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--color-blanco);
+    font-style: italic;
+    margin-top: 14px;
+    margin-bottom: 14px;
+    line-height: var(--line-height-titulo);
+}
+
+.conferencias__subtitulo {
+    font-size: 21px;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 300;
+}
+
+.conferencias__videos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 20px;
+}
+
+/*? El video principal ocupa las 3 columnas */
+.video-item--principal {
+    grid-column: 1 / 4;
+}
+
+.video-item {
+    background-color: var(--color-azul-medio);
+    border: 1px solid rgba(176, 141, 87, 0.15);
+    border-top: 2px solid transparent;
+    overflow: hidden;
+    transition: border-color var(--transicion), transform var(--transicion), border-top-color var(--transicion);
+    will-change: transform;
+}
+
+.video-item:hover {
+    border-color: rgba(176, 141, 87, 0.5);
+    border-top-color: var(--color-dorado);
+    transform: translateY(-3px);
+}
+
+/*? Grid de 1 celda: superpone el video y el badge "Con Audio" */
+.video-item__contenedor-video {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+.video-item__video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: var(--color-azul);
+    grid-column: 1;
+    grid-row: 1;
+}
+
+/*? El badge se posiciona en la esquina superior izquierda del video */
+.video-item__etiqueta {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+    justify-self: start;
+    margin: 14px 0 0 14px;
+}
+
+.video-item__badge {
+    font-family: var(--fuente-versalitas);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background-color: var(--color-dorado);
+    color: var(--color-blanco);
+    padding: 5px 12px;
+}
+
+.video-item__info {
+    padding: 18px 20px;
+    border-top: 1px solid rgba(176, 141, 87, 0.15);
+}
+
+.video-item__titulo {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-blanco);
+    margin-bottom: 6px;
+    font-style: italic;
+}
+
+.video-item__subtitulo {
+    font-family: var(--fuente-versalitas);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--color-dorado);
+    text-transform: uppercase;
+}
+
+
+/*!13. CONTACTO
+   /**Grid de 2 columnas (1fr + 1.5fr).
+   /**El formulario interno usa grid de 2 columnas.
+   /**.campo--completo usa grid-column: 1 / -1 para ocupar todo el ancho.
+   /**:focus y :focus-visible en inputs para accesibilidad de teclado.
+*/
+
+.contacto {
+    padding: var(--espaciado-xl) var(--padding-lateral);
+    background-color: var(--color-gris-suave);
+}
+
+.contacto__encabezado {
+    text-align: center;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--espaciado-l);
+}
+
+.contacto__titulo {
+    font-size: 48px;
+    font-weight: 400;
+    color: var(--color-azul);
+    font-style: italic;
+    margin-top: 14px;
+    margin-bottom: 14px;
+    line-height: var(--line-height-titulo);
+}
+
+.contacto__subtitulo {
+    font-size: 21px;
+    color: var(--color-texto-suave);
+    font-weight: 300;
+}
+
+.contacto__cuadricula {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    align-items: stretch;
+}
+
+.info-contacto {
+    background-color: var(--color-azul);
+    padding: 48px 40px;
+    overflow: hidden;
+}
+
+.info-contacto__titulo {
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--color-blanco);
+    font-style: italic;
+    margin-bottom: 36px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(176, 141, 87, 0.25);
+}
+
+.item-contacto {
+    margin-bottom: 26px;
+}
+
+.item-contacto__etiqueta {
+    display: block;
+    font-family: var(--fuente-versalitas);
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-dorado);
+    margin-bottom: 5px;
+}
+
+.item-contacto__valor {
+    font-size: 19px;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 300;
+}
+
+.info-contacto__eslogan {
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(176, 141, 87, 0.2);
+}
+
+.info-contacto__eslogan p {
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--color-dorado-claro);
+    line-height: 1.5;
+}
+
+.formulario-contenedor {
+    background-color: var(--color-blanco);
+    padding: 48px 44px;
+    box-shadow: var(--sombra-tarjeta);
+}
+
+.formulario-contenedor__titulo {
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--color-azul);
+    font-style: italic;
+    margin-bottom: 36px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-gris);
+}
+
+.formulario {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+/*? grid-column: 1 / -1 hace que el campo ocupe ambas columnas */
+.campo--completo {
+    grid-column: 1 / -1;
+}
+
+.campo__etiqueta {
+    font-family: var(--fuente-versalitas);
+    font-size: 15px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--color-texto-suave);
+}
+
+.campo__entrada {
+    font-family: var(--fuente-principal);
+    font-size: 16px;
+    color: var(--color-texto);
+    background-color: var(--color-gris-suave);
+    border: 1px solid var(--color-gris);
+    padding: 14px 16px;
+    outline: none;
+    transition: border-color var(--transicion), background-color var(--transicion);
+    width: 100%;
+}
+
+/*? :focus-visible es la pseudoclase para usuarios de teclado */
+.campo__entrada:focus,
+.campo__entrada:focus-visible {
+    border-color: var(--color-dorado);
+    background-color: var(--color-blanco);
+}
+
+/*? Oculta la flecha nativa del select para controlarlo con CSS */
+.campo__entrada--select {
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 44px;
+}
+
+.campo__entrada--textarea {
+    resize: vertical;
+    min-height: 130px;
+}
+
+
+/*! 14. PIE DE PÁGINA
+   /**Grid de 4 columnas con proporciones distintas (2fr 1fr 1fr 1.5fr).
+   /**::before agrega la línea dorada decorativa en la parte superior.
+*/
+
+.pie {
+    background-color: var(--color-azul);
+    padding: var(--espaciado-l) var(--padding-lateral) var(--espaciado-m);
+    color: var(--color-blanco);
+}
+
+/*? ::before crea la línea dorada degradada en la parte superior del footer */
+.pie::before {
+    content: '';
+    display: block;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--color-dorado), transparent);
+    margin-bottom: 60px;
+}
+
+.pie__cuadricula {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 60px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    margin-bottom: 28px;
+}
+
+/* Sobrescribe solo para el logo del footer */
+#pie__logo-banner {
+    text-align: center;
+    justify-content: center;
+    width: 120px;
+    height: 90px;
+}
+
+.pie__siglas {
+    font-family: var(--fuente-versalitas);
+    font-size: 24px;
+    color: var(--color-blanco);
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+}
+
+.pie__eslogan-footer {
+    font-style: italic;
+    font-size: 17px;
+    color: var(--color-dorado);
+    margin-bottom: 14px;
+    opacity: 0.9;
+}
+
+.pie__descripcion {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 300;
+    max-width: 260px;
+    line-height: var(--line-height-body);
+}
+
+.pie__nav-titulo {
+    font-family: var(--fuente-versalitas);
+    font-size: 15px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-dorado);
+    margin-bottom: 22px;
+}
+
+.pie__navegacion nav,
+.pie__legal nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pie__enlace {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 300;
+    transition: color var(--transicion);
+}
+
+.pie__enlace:hover {
+    color: var(--color-dorado);
+}
+
+.pie__dato {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 300;
+    margin-bottom: 8px;
+}
+
+.pie__linea-inferior {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.pie__derechos {
+    font-family: var(--fuente-versalitas);
+    font-size: 17px;
+    letter-spacing: 5px;
+    color: rgba(255, 255, 255, 0.2);
+    text-align: center;
+    text-transform: uppercase;
+    max-width: 600px;
+    margin-top: 25px;
+}
+
+
+/*! 15. RESPONSIVIDAD
+   /**5 breakpoints para cubrir desde computadores hasta móviles pequeños.
+   /**Breakpoint 900px: activa el menú hamburguesa.
+*/
+
+@media (max-width: 1200px) {
+    .encabezado { padding: 18px 40px; }
+    .inicio__contenido   { padding-left: 60px; }
+    .inicio__titulo      { font-size: 50px; }
+    .inicio__metricas    { margin-right: 40px; }
+    
+
+    .areas,
+    .equipo,
+    .hitos,
+    .metodo,
+    .conferencias,
+    .contacto         { padding-left: 40px; padding-right: 40px; }
+
+    .areas__cuadricula    { grid-template-columns: repeat(2, 1fr); }
+    .hitos__cuadricula    { grid-template-columns: repeat(2, 1fr); }
+    .metodo__pasos        { grid-template-columns: repeat(2, 1fr); }
+
+    .conferencias__videos  { grid-template-columns: 1fr 1fr; }
+    .video-item--principal { grid-column: 1 / 3; }
+
+    .contacto__cuadricula { grid-template-columns: 1fr; }
+
+    .pie                 { padding-left: 40px; padding-right: 40px; }
+    .pie__cuadricula     { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+
+@media (max-width: 900px) {
+    .encabezado { padding: 16px 24px; }
+    .menu-hamburguesa { display: flex; }
+    .encabezado { flex-wrap: wrap; }
+    .encabezado__logo-banner { margin-left: 270px; }
+    .inicio__video-fondo {
+        display: none !important; /* Desactiva y oculta por completo el video en celular */
+    }
+
+    .inicio__contenedor-video {
+        /* Se aplica el gradiente de fondo en reemplazo del video usando tus colores corporativos */
+        background: linear-gradient(135deg, var(--color-azul) 0%, var(--color-azul-medio) 100%) !important;
+    }
+
+    /*? El nav se oculta con max-height: 0 y se expande cuando el checkbox está marcado */
+    .encabezado__nav {
+        display: flex;
+        overflow: hidden;
+        max-height: 0;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        border-top: 0px solid rgba(176, 141, 87, 0.2);
+        padding: 0;
+        transition: max-height var(--transicion), border-top-width 0.1s, padding var(--transicion);
+    }
+
+    .menu-activo:checked ~ .encabezado__nav {
+        max-height: 500px;
+        border-top-width: 1px;
+        padding: 16px 0;
+    }
+
+    .enlace-nav { padding: 12px 28px; display: block; }
+
+    .inicio__contenido        { padding-left: 32px; padding-right: 32px; }
+    .inicio__titulo           { font-size: 38px; }
+    .inicio__metricas         { display: none; }
+
+    .conferencias__videos  { grid-template-columns: 1fr; }
+    .video-item--principal { grid-column: 1; }
+
+    .formulario            { grid-template-columns: 1fr; }
+    .campo--completo       { grid-column: 1; }
+
+    .pie__cuadricula { grid-template-columns: 1fr; gap: 28px; }
+}
+
+@media (max-width: 600px) {
+    :root {
+        --espaciado-xl: 60px;
+        --espaciado-l:  40px;
+    }
+
+    .inicio__titulo       { font-size: 30px; }
+    .inicio__descripcion  { font-size: 16px; }
+    .inicio__botones      { flex-direction: column; }
+    .inicio__banner svg   { width: 180px; }
+    /* 1. Video del hero en móvil — ocultarlo y poner gradiente de fondo */
+    .inicio__video-fondo {
+        display: none !important; /* Desactiva y oculta por completo el video en celular */
+    }
+
+    .inicio__contenedor-video {
+        /* Se aplica el gradiente de fondo en reemplazo del video usando tus colores corporativos */
+        background: linear-gradient(135deg, var(--color-azul) 0%, var(--color-azul-medio) 100%) !important;
+    }
+
+    .areas,
+    .equipo,
+    .hitos,
+    .metodo,
+    .conferencias,
+    .contacto { padding-left: 20px; padding-right: 20px; }
+
+    .areas__cuadricula { grid-template-columns: 1fr; }
+    .hitos__cuadricula { grid-template-columns: 1fr; }
+    .metodo__pasos     { grid-template-columns: 1fr; }
+
+    /*? En móvil el borde cambia de right a bottom */
+    .paso { border-right: none; border-bottom: 1px solid var(--color-gris); }
+    .paso:last-child { border-bottom: none; }
+
+    .equipo__cuadricula { flex-direction: column; align-items: center; }
+    .tarjeta-abogado    { flex: 0 1 100%; max-width: 360px; width: 100%; }
+
+    .areas__titulo,
+    .equipo__titulo,
+    .hitos__titulo,
+    .metodo__titulo,
+    .contacto__titulo,
+    .conferencias__titulo { font-size: 34px; }
+
+    .formulario-contenedor { padding: 28px 20px; }
+    .info-contacto         { padding: 32px 24px; }
+
+    .pie                   { padding-left: 20px; padding-right: 20px; }
+    .pie__cuadricula       { gap: 20px; }
+}
+
+@media (max-width: 600px) {
+
+    
+    /* 1. Video del hero en móvil — ocultarlo y poner gradiente de fondo */
+    .inicio__video-fondo {
+        display: none !important; /* Desactiva y oculta por completo el video en celular */
+    }
+
+    .inicio__contenedor-video {
+        /* Se aplica el gradiente de fondo en reemplazo del video usando tus colores corporativos */
+        background: linear-gradient(135deg, var(--color-azul) 0%, var(--color-azul-medio) 100%) !important;
+    }
+
+    /* 2. Hero móvil — limpiar el texto */
+    .inicio__contenido {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        margin-bottom: 0 !important; /* Centra verticalmente limpiando espacios excesivos */
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .inicio__etiqueta {
+        font-size: 14px !important; /* Más legible y limpio en pantallas pequeñas */
+        letter-spacing: 2px !important;
+        margin-bottom: 12px !important;
+    }
+    .encabezado__logo-banner { margin-left: 180px; }
+
+    .inicio__etiqueta::before {
+        display: none !important; /* Remueve la línea lateral para centrar correctamente el texto */
+    }
+
+    .inicio__banner {
+        justify-content: center !important; /* Centra el ícono del logo en el contenido */
+        margin-bottom: 16px !important;
+    }
+
+    .inicio__logo {
+        margin-left: 0 !important; /* Limpia el margen izquierdo heredado de PC */
+        height: 40px !important;
+    }
+
+    .inicio__titulo {
+        font-size: 32px !important; /* Reduce el tamaño evitando cortes bruscos en el texto */
+        line-height: 1.3 !important;
+        margin-bottom: 16px !important;
+    }
+
+    .inicio__descripcion {
+        font-size: 15px !important;
+        line-height: 1.6 !important;
+        margin-bottom: 28px !important;
+        max-width: 100% !important;
+        opacity: 0.9 !important;
+    }
+
+    .inicio__botones {
+        justify-content: center !important; /* Alineación limpia de los botones de acción */
+        width: 100% !important;
+        gap: 12px !important;
+    }
+
+    .boton-principal, 
+    .boton-secundario {
+        width:80% !important; /* Hace que los botones se adapten cómodamente al ancho del celular */
+        padding: 5px 10px ;
+        font-size: 13px !important;
+        text-align: center !important;
+    }
+
+    /* Ajuste extra para las métricas flotantes en móvil para que no pisen el texto */
+    .inicio__metricas {
+        display: none !important; /* Limpia por completo el espacio visual en teléfonos menores a 600px */
+    }
+}
+@media (max-width: 400px) {
+    :root {
+        --espaciado-xl: 48px;
+        --espaciado-l:  32px;
+    }
+
+    .encabezado { padding: 14px 16px; }
+    .encabezado__logo-banner { margin-left: 140px; }
+
+    .inicio__contenido   { padding-left: 16px; padding-right: 16px; }
+    .inicio__titulo      { font-size: 24px; }
+    .inicio__descripcion { font-size: 14px; margin-bottom: 28px; }
+    .inicio__banner      { display: none; }
+
+    .boton-principal,
+    .boton-secundario { padding: 14px 24px; font-size: 12px; letter-spacing: 2px; }
+
+    .areas,
+    .equipo,
+    .hitos,
+    .metodo,
+    .conferencias,
+    .contacto { padding-left: 12px; padding-right: 12px; }
+
+    .areas__titulo,
+    .equipo__titulo,
+    .hitos__titulo,
+    .metodo__titulo,
+    .contacto__titulo,
+    .conferencias__titulo { font-size: 26px; }
+
+    .tarjeta-area        { padding: 28px 18px 24px; }
+    .tarjeta-hito        { padding: 36px 20px; }
+    .tarjeta-hito__cifra { font-size: 22px; }
+
+    .paso { padding: 28px 16px; }
+    .paso__numero { font-size: 52px; }
+
+    .formulario-contenedor { padding: 20px 14px; }
+    .info-contacto         { padding: 24px 16px; }
+    .campo__entrada { padding: 12px 12px; font-size: 15px; }
+
+    .pie { padding-left: 12px; padding-right: 12px; }
+    .pie__cuadricula { gap: 16px; }
+    .pie__derechos { font-size: 9px; letter-spacing: 1px; }
+}
+
+@media (max-width: 300px) {
+    :root {
+        --espaciado-xl: 36px;
+        --espaciado-l:  24px;
+        --espaciado-m:  20px;
+    }
+
+    .encabezado { padding: 12px 10px; }
+    .encabezado__logo-banner { height: 45px;
+    margin-left: 110px;
+    
+    }
+
+    .inicio__titulo      { font-size: 20px; line-height: var(--line-height-titulo); }
+    .inicio__descripcion { font-size: 13px; }
+    .inicio__contenido   { padding-left: 10px; padding-right: 10px; }
+
+    .boton-principal,
+    .boton-secundario {
+        padding: 12px 16px;
+        font-size: 11px;
+        letter-spacing: 1px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .areas,
+    .equipo,
+    .hitos,
+    .metodo,
+    .conferencias,
+    .contacto { padding-left: 10px; padding-right: 10px; }
+
+    .areas__titulo,
+    .equipo__titulo,
+    .hitos__titulo,
+    .metodo__titulo,
+    .contacto__titulo,
+    .conferencias__titulo { font-size: 22px; }
+
+    .etiqueta-seccion { font-size: 10px; letter-spacing: 3px; }
+
+    .tarjeta-area        { padding: 20px 12px 18px; }
+    .tarjeta-area__nombre { font-size: 17px; }
+    .tarjeta-area__descripcion { font-size: 13px; }
+
+    .tarjeta-abogado__info { padding: 16px 14px; }
+    .tarjeta-abogado__nombre { font-size: 17px; }
+
+    .tarjeta-hito        { padding: 28px 14px; }
+    .tarjeta-hito__cifra { font-size: 18px; }
+
+    .paso { padding: 20px 10px; }
+    .paso__numero { font-size: 42px; }
+    .paso__nombre { font-size: 18px; }
+
+    .formulario-contenedor { padding: 16px 10px; }
+    .formulario { gap: 14px; }
+    .campo__entrada { padding: 10px; font-size: 14px; }
+    .info-contacto  { padding: 18px 12px; }
+
+    .pie { padding-left: 10px; padding-right: 10px; }
+    .pie__cuadricula { gap: 14px; }
+    .pie__siglas { font-size: 16px; }
+    .pie__derechos { font-size: 8px; letter-spacing: 0.5px; }
+
+    .video-item__titulo { font-size: 14px; }
+}
+
+@media (max-width: 1024px) {
+    .ficha {
+        width: 50%;
+    }
+    .areas__titulo {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 640px) {
+    .ficha {
+        width: 100%;
+        min-height: 0;
+        border-right: none;
+    }
+    .areas__titulo {
+        font-size: 32px;
+    }
+    .ficha__cuerpo {
+        padding: 32px 22px 22px;
+    }
+    .ficha__pie {
+        position: static;
+        padding: 16px 22px;
+    }
+}
+
+@media (max-width: 360px) {
+    .areas {
+        padding: var(--espaciado-xl) 16px;
+    }
+    .areas__titulo {
+        font-size: 26px;
+    }
+    .areas__subtitulo {
+        font-size: 15px;
+    }
+    .ficha__cuerpo {
+        padding: 26px 18px 18px;
+    }
+    .ficha__descripcion {
+        font-size: 15px;
+    }
+    .ficha__pie {
+        padding: 16px 18px;
+    }
+    .ficha__honorarios {
+        float: none;
+        max-width: 100%;
+        margin-bottom: 14px;
+    }
+    .ficha__cta {
+        float: none;
+        text-align: center;
+        padding: 10px 30px 10px 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ficha, .ficha__icono, .ficha__pie, .ficha__cta, .ficha__cta svg {
+        transition: none;
+    }
+}
+/*! Card*/
+
+
+/*!16. ACCESIBILIDAD — prefers-reduced-motion
+    /**Si el usuario tiene activada la opción "reducir movimiento"
+    /**en su sistema operativo, se desactivan todas las animaciones
+/**y transiciones para evitar molestias visuales.
+*/
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

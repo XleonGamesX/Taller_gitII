@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mejía & Asociados — Estudio Jurídico</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Cormorant+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+    <!--!SECCIÓN 1: ENCABEZADO
+                    <!--*       Barra de navegación superior con logo y menú.
+                    <!--*       El menú hamburguesa funciona con checkbox + label -->
+    <header class="encabezado" id="inicio">
+
+        <div class="encabezado__marca">
+            <img class="encabezado__logo-banner"
+                src="./img/logomj.png"
+                alt="Mejía & Asociados">
+        </div>
+
+        <nav class="encabezado__nav" id="navegacion" role="navigation" aria-label="Navegación principal">
+            <a class="enlace-nav" href="#inicio">Inicio</a>
+            <a class="enlace-nav" href="#areas">Servicios</a>
+            <a class="enlace-nav" href="#equipo">Equipo</a>
+            <a class="enlace-nav" href="#conferencias">Conferencias</a>
+            <a class="enlace-nav" href="#contacto">Contacto</a>
+        </nav>
+
+        <input type="checkbox" id="menu-activo" class="menu-activo" aria-hidden="true">
+        <label for="menu-activo" class="menu-hamburguesa" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </label>
+
+    </header>
+
+
+    <!--!SECCIÓN 2: HERO / INICIO
+            <!--*   Video de fondo + contenido + métricas flotantes.
+            <!--*   Orden de capas (de fondo a frente):
+            <!--*       1. video-fondo
+            <!--*       2. degradado negro
+            <!--*       3. patrón de puntos
+            <!--*       4. contenido (título + botones)
+            <!--*       5. métricas flotantes-->
+    <section class="inicio" id="hero">
+
+        <div class="inicio__contenedor-video">
+            <video autoplay muted loop playsinline class="inicio__video-fondo">
+                <source src="https://dl.dropbox.com/scl/fi/7dvm16bgu7j31hagz6p38/INTRODUCION.mp4?rlkey=zxrcnvhyy67lka468pvtw8rt9&st=ph2h5szb&dl=0" type="video/mp4">
+            </video>
+            <div class="inicio__degradado" aria-hidden="true"></div>
+        </div>
+
+        <div class="inicio__contenido">
+            <span class="inicio__etiqueta">Estudio Jurídico · Fundado en 2004</span>
+
+            <div class="inicio__banner" aria-hidden="true">
+                <span class="banner-linea"></span>
+                <img src="./img/icono_logo.png" alt="Logo Mejía & Asociados" class="inicio__logo">
+                <span class="banner-linea"></span>
+            </div>
+
+            <h1 class="inicio__titulo">
+                El blindaje legal de las<br>
+                grandes decisiones<br>
+                empresariales
+            </h1>
+
+            <p class="inicio__descripcion">
+                Más de 20 años de trayectoria, liderando la defensa y estructuración
+                jurídica de las corporaciones más importantes de Colombia.
+            </p>
+
+            <div class="inicio__botones">
+                <a class="boton-principal" href="#contacto">Solicitar Consulta</a>
+                <a class="boton-secundario" href="#areas">Ver Servicios</a>
+            </div>
+        </div>
+
+        <div class="inicio__metricas" aria-hidden="true">
+            <div class="inicio__metrica">
+                <span class="inicio__metrica-numero">20+</span>
+                <span class="inicio__metrica-texto">Años de experiencia</span>
+            </div>
+            <div class="inicio__metrica">
+                <span class="inicio__metrica-numero">500+</span>
+                <span class="inicio__metrica-texto">Casos resueltos</span>
+            </div>
+            <div class="inicio__metrica">
+                <span class="inicio__metrica-numero">98%</span>
+                <span class="inicio__metrica-texto">Tasa de éxito</span>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!--!SECCIÓN 3: ÁREAS DE PRÁCTICA
+        8 tarjetas en grid de 4 columnas.
+        Los íconos son SVG inline (sin imágenes externas).
+        -->
+<section class="areas" id="areas">
+
+    <div class="areas__encabezado">
+        <p class="etiqueta-seccion etiqueta-seccion--clara">Nuestras Áreas</p>
+        <h2 class="areas__titulo">Excelencia Técnica<br>en Cada Dimensión</h2>
+        <p class="areas__subtitulo">Cobertura jurídica integral para todas las necesidades de su empresa.</p>
+    </div>
+
+    <div class="areas__cuadricula">
+
+        <article class="ficha">
+            <div class="ficha__cuerpo">
+                <div class="ficha__cabecera">
+                    <span class="ficha__expediente">Expediente N.º 01</span>
+                    <div class="ficha__icono" aria-hidden="true">
+                        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 4 L36 12 L36 28 L20 36 L4 28 L4 12 Z" fill="none" stroke="#B08D57" stroke-width="1"/>
+                            <path d="M14 20 L18 24 L26 16" fill="none" stroke="#B08D57" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="ficha__nombre">Derecho Laboral</h3>
+                <p class="ficha__descripcion">Asesoría en procesos, contratos y gestión jurídica de relaciones laborales empresariales.</p>
+            </div>
+            <div class="ficha__pie">
+                <div class="ficha__honorarios">
+                    <p class="ficha__honorarios-etiqueta">Honorarios desde</p>
+                    <span class="ficha__precio">$500.000</span>
+                </div>
+                <a href="#contacto" class="ficha__cta">
+                    <span>Solicitar servicio</span>
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+                </a>
+            </div>
+        </article>
+
+        <article class="ficha">
+            <div class="ficha__cuerpo">
+                <div class="ficha__cabecera">
+                    <span class="ficha__expediente">Expediente N.º 02</span>
+                    <div class="ficha__icono" aria-hidden="true">
+                        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="8" y="8" width="24" height="24" fill="none" stroke="#B08D57" stroke-width="1"/>
+                            <line x1="14" y1="20" x2="26" y2="20" stroke="#B08D57" stroke-width="1"/>
+                            <line x1="20" y1="14" x2="20" y2="26" stroke="#B08D57" stroke-width="1"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="ficha__nombre">Derecho Comercial</h3>
+                <p class="ficha__descripcion">Acompañamiento legal en negocios, sociedades, inversiones y operaciones comerciales.</p>
+            </div>
+            <div class="ficha__pie">
+                <div class="ficha__honorarios">
+                    <p class="ficha__honorarios-etiqueta">Honorarios desde</p>
+                    <span class="ficha__precio">$700.000</span>
+                </div>
+                <a href="#contacto" class="ficha__cta">
+                    <span>Solicitar servicio</span>
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+                </a>
+            </div>
+        </article>
+
+        <article class="ficha">
+            <div class="ficha__cuerpo">
+                <div class="ficha__cabecera">
+                    <span class="ficha__expediente">Expediente N.º 03</span>
+                    <div class="ficha__icono" aria-hidden="true">
+                        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="20" cy="20" r="14" fill="none" stroke="#B08D57" stroke-width="1"/>
+                            <path d="M14 17 C14 14 26 14 26 17 C26 22 20 22 20 25 L20 27" fill="none" stroke="#B08D57" stroke-width="1.2"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="ficha__nombre">Derecho de Familia</h3>
+                <p class="ficha__descripcion">Regulamos relaciones jurídicas del matrimonio, parentesco y uniones familiares.</p>
+            </div>
+            <div class="ficha__pie">
+                <div class="ficha__honorarios">
+                    <p class="ficha__honorarios-etiqueta">Honorarios desde</p>
+                    <span class="ficha__precio">$400.000</span>
+                </div>
+                <a href="#contacto" class="ficha__cta">
+                    <span>Solicitar servicio</span>
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+                </a>
+            </div>
+        </article>
+
+        <article class="ficha">
+            <div class="ficha__cuerpo">
+                <div class="ficha__cabecera">
+                    <span class="ficha__expediente">Expediente N.º 04</span>
+                    <div class="ficha__icono" aria-hidden="true">
+                        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 32 L20 10 L32 32 Z" fill="none" stroke="#B08D57" stroke-width="1"/>
+                            <line x1="12" y1="26" x2="28" y2="26" stroke="#B08D57" stroke-width="1"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="ficha__nombre">Derecho Civil</h3>
+                <p class="ficha__descripcion">Soluciones legales sobre patrimonio, obligaciones y relaciones civiles entre personas.</p>
+            </div>
+            <div class="ficha__pie">
+                <div class="ficha__honorarios">
+                    <p class="ficha__honorarios-etiqueta">Honorarios desde</p>
+                    <span class="ficha__precio">$450.000</span>
+                </div>
+                <a href="#contacto" class="ficha__cta">
+                    <span>Solicitar servicio</span>
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+                </a>
+            </div>
+        </article>
+
+        <article class="ficha">
+            <div class="ficha__cuerpo">
+                <div class="ficha__cabecera">
+                    <span class="ficha__expediente">Expediente N.º 05</span>
+                    <div class="ficha__icono" aria-hidden="true">
+                        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="14" width="20" height="16" fill="none" stroke="#B08D57" stroke-width="1"/>
+                            <path d="M14 14 L14 10 L26 10 L26 14" fill="none" stroke="#B08D57" stroke-width="1"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="ficha__nombre">Asesoría Empresarial</h3>
+                <p class="ficha__descripcion">Estrategias jurídicas para fortalecer empresas y garantizar crecimiento seguro sostenible.</p>
+            </div>
+            <div class="ficha__pie">
+                <div class="ficha__honorarios">
+                    <p class="ficha__honorarios-etiqueta">Honorarios desde</p>
+                    <span class="ficha__precio">$900.000</span>
+                </div>
+                <a href="#contacto" class="ficha__cta">
+                    <span>Solicitar servicio</span>
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+                </a>
+            </div>
+        </article>
+
+        <article class="ficha">
+            <div class="ficha__cuerpo">
+                <div class="ficha__cabecera">
+                    <span class="ficha__expediente">Expediente N.º 06</span>
+                    <div class="ficha__icono" aria-hidden="true">
+                        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="20" cy="20" r="12" fill="none" stroke="#B08D57" stroke-width="1"/>
+                            <path d="M20 8 L20 4 M32 20 L36 20 M20 32 L20 36 M8 20 L4 20" stroke="#B08D57" stroke-width="1"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="ficha__nombre">Representación Judicial</h3>
+                <p class="ficha__descripcion">Defensa legal y representación efectiva en procesos judiciales y administrativos complejos.</p>
+            </div>
+            <div class="ficha__pie">
+                <div class="ficha__honorarios">
+                    <p class="ficha__honorarios-etiqueta">Honorarios desde</p>
+                    <span class="ficha__precio">$1.200.000</span>
+                </div>
+                <a href="#contacto" class="ficha__cta">
+                    <span>Solicitar servicio</span>
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+                </a>
+            </div>
+        </article>
+
+        <article class="ficha">
+            <div class="ficha__cuerpo">
+                <div class="ficha__cabecera">
+                    <span class="ficha__expediente">Expediente N.º 07</span>
+                    <div class="ficha__icono" aria-hidden="true">
+                        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 10 L30 10 L30 30 L10 30 Z" fill="none" stroke="#B08D57" stroke-width="1"/>
+                            <line x1="15" y1="18" x2="25" y2="18" stroke="#B08D57" stroke-width="1"/>
+                            <line x1="15" y1="22" x2="25" y2="22" stroke="#B08D57" stroke-width="1"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="ficha__nombre">Consultoría Corporativa</h3>
+                <p class="ficha__descripcion">Acompañamiento jurídico estratégico para decisiones empresariales.</p>
+            </div>
+            <div class="ficha__pie">
+                <div class="ficha__honorarios">
+                    <p class="ficha__honorarios-etiqueta">Honorarios desde</p>
+                    <span class="ficha__precio">$1.500.000</span>
+                </div>
+                <a href="#contacto" class="ficha__cta">
+                    <span>Solicitar servicio</span>
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+                </a>
+            </div>
+        </article>
+
+        <article class="ficha">
+            <div class="ficha__cuerpo">
+                <div class="ficha__cabecera">
+                    <span class="ficha__expediente">Expediente N.º 08</span>
+                    <div class="ficha__icono" aria-hidden="true">
+                        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 8 L28 8 L32 12 L32 34 L8 34 L8 12 Z" fill="none" stroke="#B08D57" stroke-width="1"/>
+                            <line x1="14" y1="20" x2="26" y2="20" stroke="#B08D57" stroke-width="1"/>
+                            <line x1="14" y1="25" x2="22" y2="25" stroke="#B08D57" stroke-width="1"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="ficha__nombre">Elaboración de Contratos</h3>
+                <p class="ficha__descripcion">Redacción profesional de contratos civiles y comerciales adaptados a cada necesidad.</p>
+            </div>
+            <div class="ficha__pie">
+                <div class="ficha__honorarios">
+                    <p class="ficha__honorarios-etiqueta">Honorarios desde</p>
+                    <span class="ficha__precio">$350.000</span>
+                </div>
+                <a href="#contacto" class="ficha__cta">
+                    <span>Solicitar servicio</span>
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+                </a>
+            </div>
+        </article>
+
+    </div>
+
+</section>
+
+
+    <!--!SECCIÓN 4: EQUIPO LEGAL
+        <!--*       4 tarjetas de abogados con foto, nombre, cargo y especialidad.
+        <!--*       Técnica: Grid de 1 celda en la imagen para superponer capas
+        <!--*       (texto de fondo ::before, foto, velo, badge de años)
+        
+        -->
+    <section class="equipo" id="equipo">
+
+        <div class="equipo__encabezado">
+            <p class="etiqueta-seccion">Equipo Legal</p>
+            <h2 class="equipo__titulo">Mentes que definen el Derecho</h2>
+            <p class="equipo__subtitulo">Abogados especializados con décadas de experiencia en derecho corporativo.</p>
+        </div>
+
+        <div class="equipo__cuadricula">
+
+            <article class="tarjeta-abogado">
+                <div class="tarjeta-abogado__imagen-contenedor">
+                    <img src="./img/brief_img/roberto_mejia.png" alt="Dr. Roberto Mejía" class="tarjeta-abogado__imagen">
+                    <div class="tarjeta-abogado__velo" aria-hidden="true"></div>
+                    <div class="tarjeta-abogado__anios">
+                        <span>20 años</span>
+                        <small>de experiencia</small>
+                    </div>
+                </div>
+                <div class="tarjeta-abogado__info">
+                    <h3 class="tarjeta-abogado__nombre">Dr. Roberto Mejía</h3>
+                    <p class="tarjeta-abogado__cargo">Fundador y Socio Principal</p>
+                    <p class="tarjeta-abogado__especialidad">Derecho Corporativo · Litigio Internacional</p>
+                </div>
+            </article>
+
+            <article class="tarjeta-abogado">
+                <div class="tarjeta-abogado__imagen-contenedor">
+                    <img src="./img/brief_img/elena_valdes.png" alt="Dra. Elena Valdés" class="tarjeta-abogado__imagen">
+                    <div class="tarjeta-abogado__velo" aria-hidden="true"></div>
+                    <div class="tarjeta-abogado__anios">
+                        <span>15 años</span>
+                        <small>de experiencia</small>
+                    </div>
+                </div>
+                <div class="tarjeta-abogado__info">
+                    <h3 class="tarjeta-abogado__nombre">Dra. Elena Valdés</h3>
+                    <p class="tarjeta-abogado__cargo">Socia — Derecho Comercial</p>
+                    <p class="tarjeta-abogado__especialidad">Contratos · M&A · Inversión extranjera</p>
+                </div>
+            </article>
+
+            <article class="tarjeta-abogado">
+                <div class="tarjeta-abogado__imagen-contenedor">
+                    <img src="./img/brief_img/sergio_arango.png" alt="Dr. Sergio Arango" class="tarjeta-abogado__imagen">
+                    <div class="tarjeta-abogado__velo" aria-hidden="true"></div>
+                    <div class="tarjeta-abogado__anios">
+                        <span>12 años</span>
+                        <small>de experiencia</small>
+                    </div>
+                </div>
+                <div class="tarjeta-abogado__info">
+                    <h3 class="tarjeta-abogado__nombre">Dr. Sergio Arango</h3>
+                    <p class="tarjeta-abogado__cargo">Socio — Litigio Empresarial</p>
+                    <p class="tarjeta-abogado__especialidad">Arbitraje · Procesos ejecutivos · Recursos</p>
+                </div>
+            </article>
+
+            <article class="tarjeta-abogado">
+                <div class="tarjeta-abogado__imagen-contenedor">
+                    <img src="./img/brief_img/carolina_pinto.png" alt="Dra. Carolina Pinto" class="tarjeta-abogado__imagen">
+                    <div class="tarjeta-abogado__velo" aria-hidden="true"></div>
+                    <div class="tarjeta-abogado__anios">
+                        <span>9 años</span>
+                        <small>de experiencia</small>
+                    </div>
+                </div>
+                <div class="tarjeta-abogado__info">
+                    <h3 class="tarjeta-abogado__nombre">Dra. Carolina Pinto</h3>
+                    <p class="tarjeta-abogado__cargo">Asociada Senior — Familia y Civil</p>
+                    <p class="tarjeta-abogado__especialidad">Derecho de Familia · Patrimonio · Sucesiones</p>
+                </div>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!--!SECCIÓN 5: HITOS / CASOS DESTACADOS
+        <!--*        4 tarjetas de casos de éxito (sin nombres reales).
+        <!--*        Grid de 4 columnas con separadores dorados.-->
+    <section class="hitos" id="hitos">
+
+        <div class="hitos__encabezado">
+            <p class="etiqueta-seccion etiqueta-seccion--clara">Casos Destacados</p>
+            <h2 class="hitos__titulo">Hitos de Arquitectura Legal</h2>
+        </div>
+
+        <div class="hitos__cuadricula">
+
+            <article class="tarjeta-hito">
+                <div class="tarjeta-hito__ornamento" aria-hidden="true"></div>
+                <span class="tarjeta-hito__cifra">$500M+</span>
+                <p class="tarjeta-hito__descripcion">Recuperación en arbitraje internacional del sector energético.</p>
+            </article>
+
+            <article class="tarjeta-hito">
+                <div class="tarjeta-hito__ornamento" aria-hidden="true"></div>
+                <span class="tarjeta-hito__cifra">Holding Internacional</span>
+                <p class="tarjeta-hito__descripcion">Reestructuración jurídica empresarial con operaciones en cinco países.</p>
+            </article>
+
+            <article class="tarjeta-hito">
+                <div class="tarjeta-hito__ornamento" aria-hidden="true"></div>
+                <span class="tarjeta-hito__cifra">300+ contratos</span>
+                <p class="tarjeta-hito__descripcion">Auditoría laboral completa para multinacional de manufactura.</p>
+            </article>
+
+            <article class="tarjeta-hito">
+                <div class="tarjeta-hito__ornamento" aria-hidden="true"></div>
+                <span class="tarjeta-hito__cifra">Fusión estratégica</span>
+                <p class="tarjeta-hito__descripcion">Asesoría completa en fusión de dos grupos financieros de capital privado.</p>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!--!SECCIÓN 6: NUESTRO MÉTODO
+        <!--*        4 pasos del proceso jurídico en grid de 4 columnas.
+        <!--*        Los pasos se separan con border-right (no gap).-->
+    <section class="metodo" id="metodo">
+
+        <div class="metodo__encabezado">
+            <p class="etiqueta-seccion">Nuestro Método</p>
+            <h2 class="metodo__titulo">Precisión en Cuatro Etapas</h2>
+        </div>
+
+        <div class="metodo__pasos">
+
+            <article class="paso">
+                <div class="paso__numero" aria-hidden="true">01</div>
+                <h3 class="paso__nombre">Consulta Inicial</h3>
+                <p class="paso__descripcion">Evaluación del caso, análisis de viabilidad y definición del alcance del servicio jurídico.</p>
+            </article>
+
+            <article class="paso">
+                <div class="paso__numero" aria-hidden="true">02</div>
+                <h3 class="paso__nombre">Diagnóstico</h3>
+                <p class="paso__descripcion">Análisis jurídico completo del expediente, jurisprudencia aplicable y riesgos identificados.</p>
+            </article>
+
+            <article class="paso">
+                <div class="paso__numero" aria-hidden="true">03</div>
+                <h3 class="paso__nombre">Propuesta</h3>
+                <p class="paso__descripcion">Diseño de solución legal personalizada y presentación detallada al cliente para su aprobación.</p>
+            </article>
+
+            <article class="paso">
+                <div class="paso__numero" aria-hidden="true">04</div>
+                <h3 class="paso__nombre">Ejecución</h3>
+                <p class="paso__descripcion">Representación profesional y seguimiento hasta la resolución favorable del caso.</p>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!--!SECCIÓN 7: EMPRESAS ASESORADAS
+        <!--*        Logos de clientes en tarjetas con efecto hover luminoso.
+        <!--*        Flexbox con wrap para acomodar automáticamente.
+        <!--*        Fondo con gradiente vertical de blanco a azul oscuro.-->
+    <section class="clientes" id="clientes">
+
+    <p class="clientes__titulo">Empresas Asesoradas</p>
+    <p class="clientes__subtitulo">
+        Compañías de distintos sectores confían en nuestra firma para blindar
+        jurídicamente sus decisiones más importantes. Brindamos acompañamiento
+        cercano, confidencial y a la medida de cada organización, con la tranquilidad
+        de contar siempre con un respaldo legal sólido y oportuno.
+    </p>
+
+    <div class="clientes__carrusel">
+        <div class="clientes__pista">
+
+            <!-- Grupo 1 -->
+            <div class="cliente-card">
+                <img src="./img/Empresas_Asesoradas/capital.png" alt="Capital" class="clientes__logo">
+            </div>
+            <div class="cliente-card">
+                <img src="./img/Empresas_Asesoradas/elite.png" alt="Elite" class="clientes__logo">
+            </div>
+            <div class="cliente-card">
+                <img src="./img/Empresas_Asesoradas/grupoandino.png" alt="Grupo Andino" class="clientes__logo">
+            </div>
+            <div class="cliente-card">
+                <img src="./img/Empresas_Asesoradas/inversionesnova.png" alt="Inversiones Nova" class="clientes__logo">
+            </div>
+            <div class="cliente-card">
+                <img src="./img/Empresas_Asesoradas/sas.png" alt="SAS" class="clientes__logo">
+            </div>
+            <div class="cliente-card">
+                <img src="./img/Empresas_Asesoradas/banc.png" alt="Bancolombia" class="clientes__logo">
+            </div>
+
+            <div class="cliente-card">
+                <img src="./img/Empresas_Asesoradas/banco_bogota.png" alt="Banco Bogotá" class="clientes__logo">
+            </div>
+
+            <div class="cliente-card">
+                <img src="./img/Empresas_Asesoradas/exito.png" alt="Éxito" class="clientes__logo">
+            </div>
+            <div class="cliente-card">
+                <img src="./img/Empresas_Asesoradas/olimpica.png" alt="Olimpica" class="clientes__logo">
+            </div>
+            <div class="cliente-card">
+                <img src="./img/Empresas_Asesoradas/alkosto.png" alt="Alkosto" class="clientes__logo">
+            </div>
+            
+
+            <!-- Grupo 2 (idéntico, necesario para el bucle infinito sin cortes) -->
+            <div class="cliente-card">
+                <img src="./img/Empresas_Asesoradas/capital.png" alt="" class="clientes__logo">
+            </div>
+            <div class="cliente-card">
+                <img src="./img/Empresas_Asesoradas/elite.png" alt="" class="clientes__logo">
+            </div>
+            <div class="cliente-card">
+                <img src="./img/Empresas_Asesoradas/grupoandino.png" alt="" class="clientes__logo">
+            </div>
+            <div class="cliente-card">
+                <img src="./img/Empresas_Asesoradas/inversionesnova.png" alt="" class="clientes__logo">
+            </div>
+            <div class="cliente-card">
+                <img src="./img/Empresas_Asesoradas/sas.png" alt="" class="clientes__logo">
+            </div>
+            <div class="cliente-card">
+                <img src="./img/Empresas_Asesoradas/banc.png" alt="" class="clientes__logo">
+            </div>
+
+            <div class="cliente-card">
+                <img src="./img/Empresas_Asesoradas/banco_bogota.png" alt="" class="clientes__logo">
+            </div>
+
+            <div class="cliente-card">
+                <img src="./img/Empresas_Asesoradas/exito.png" alt="" class="clientes__logo">
+            </div>
+            <div class="cliente-card">
+                <img src="./img/Empresas_Asesoradas/olimpica.png" alt="" class="clientes__logo">
+            </div>
+            <div class="cliente-card">
+                <img src="./img/Empresas_Asesoradas/alkosto.png"Alkosto" class="clientes__logo">
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+
+    <!--!SECCIÓN 8: CONFERENCIAS
+        1 video principal con audio (ocupa 3 columnas) +
+        3 videos secundarios en silencio y bucle automático.
+        Grid de 3 columnas con 2 filas.
+        El badge "Con Audio" se superpone al video con grid de 1 celda.
+        -->
+    <section class="conferencias" id="conferencias">
+
+        <div class="conferencias__encabezado">
+            <p class="etiqueta-seccion etiqueta-seccion--clara">Conocimiento Compartido</p>
+            <h2 class="conferencias__titulo">Conferencias y Asesorías Empresariales</h2>
+            <p class="conferencias__subtitulo">Algunas de nuestras conferencias jurídicas y capacitaciones corporativas.</p>
+        </div>
+
+        <div class="conferencias__videos">
+
+            <!--!Video principal: con audio, ocupa las 3 columnas-->
+            <div class="video-item video-item--principal">
+                <div class="video-item__contenedor-video">
+                    <video controls class="video-item__video">
+                        <source src="https://www.dropbox.com/scl/fi/da8huxbl7e1a9so7513sp/video-audio.mp4?rlkey=f7fycwsqpl5ryyzwunmu6elsj&st=fj9fb3v1&raw=1" type="video/mp4">
+                    </video>
+                    <div class="video-item__etiqueta">
+                        <span class="video-item__badge">Con Audio</span>
+                    </div>
+                </div>
+                <div class="video-item__info">
+                    <h3 class="video-item__titulo">Reforma Laboral 2024: Impacto para las Empresas</h3>
+                    <p class="video-item__subtitulo">Dr. Roberto Mejía · Cámara de Comercio de Bogotá</p>
+                </div>
+            </div>
+
+    <!--! Videos secundarios: silencio, bucle automático -->
+        <!--?Contratos Comerciales Internacionales-->
+            <div class="video-item">
+                <video autoplay muted loop playsinline class="video-item__video">
+                    <source src="https://www.dropbox.com/scl/fi/49qkmchbrx90k1cjaxmil/Contratos-Comerciales-Internacionales.mp4?rlkey=ghr5cp1n3lfyucv2nmz4t76yz&st=nwx87j7l&raw=1" type="video/mp4">
+                </video>
+                <div class="video-item__info">
+                    <h3 class="video-item__titulo">Contratos Comerciales Internacionales</h3>
+                    <p class="video-item__subtitulo">Dra. Elena Valdés</p>
+                </div>
+            </div>
+        <!--?Arbitraje Empresarial en Colombia-->
+            <div class="video-item">
+                <video autoplay muted loop playsinline class="video-item__video">
+                    <source src="https://www.dropbox.com/scl/fi/8lb0yv31gbokz2l2rsobe/Arbitraje-Empresarial.mov?rlkey=1eo2l21rj88b1y1ir0jie8w5i&st=9xyc2bgj&raw=1" type="video/mp4">
+                </video>
+                <div class="video-item__info">
+                    <h3 class="video-item__titulo">Arbitraje Empresarial en Colombia</h3>
+                    <p class="video-item__subtitulo">Dr. Sergio Arango</p>
+                </div>
+            </div>
+        <!--?Protección del Patrimonio Familiar-->
+            <div class="video-item">
+                <video autoplay muted loop playsinline class="video-item__video">
+                    <source src="https://www.dropbox.com/scl/fi/nwhmu39efbux3f1efj9f8/Protecci-n-Patrimonial.mov?rlkey=571ust9jc1db6hrhrfta4wljt&st=mgasiass&raw=1" type="video/mp4">
+                </video>
+                <div class="video-item__info">
+                    <h3 class="video-item__titulo">Protección del Patrimonio Familiar</h3>
+                    <p class="video-item__subtitulo">Dra. Carolina Pinto</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!--!SECCIÓN 9: CONTACTO
+        2 columnas: información de contacto + formulario.
+        El formulario interno usa grid de 2 columnas.
+        Los campos "completo" usan grid-column: 1 / -1.-->
+    <section class="contacto" id="contacto">
+
+        <div class="contacto__encabezado">
+            <p class="etiqueta-seccion">Contáctenos</p>
+            <h2 class="contacto__titulo">Inicie el blindaje jurídico<br>que su empresa requiere</h2>
+            <p class="contacto__subtitulo">Consulta profesional y absolutamente confidencial.</p>
+        </div>
+
+        <div class="contacto__cuadricula">
+
+            <div class="info-contacto">
+                <h3 class="info-contacto__titulo">Información de Contacto</h3>
+                <div class="item-contacto">
+                    <span class="item-contacto__etiqueta">Ubicación</span>
+                    <p class="item-contacto__valor">Calle 123 #45-67, Bogotá, Colombia</p>
+                </div>
+                <div class="item-contacto">
+                    <span class="item-contacto__etiqueta">Teléfono</span>
+                    <p class="item-contacto__valor">+57 300 123 4567</p>
+                </div>
+                <div class="item-contacto">
+                    <span class="item-contacto__etiqueta">Correo electrónico</span>
+                    <p class="item-contacto__valor">contacto@mejia-asociados.com</p>
+                </div>
+                <div class="item-contacto">
+                    <span class="item-contacto__etiqueta">Horario de atención</span>
+                    <p class="item-contacto__valor">Lunes a Viernes — 8:00 AM a 6:00 PM</p>
+                </div>
+                <div class="info-contacto__eslogan">
+                    <p>"Experiencia Legal Que Proteje Su Futuro."</p>
+                </div>
+            </div>
+
+            <div class="formulario-contenedor">
+                <h3 class="formulario-contenedor__titulo">Solicite una Consulta</h3>
+
+                <div class="formulario">
+
+                    <div class="campo">
+                        <label class="campo__etiqueta" for="nombre">Nombre completo</label>
+                        <input class="campo__entrada" type="text" id="nombre" name="nombre" placeholder="Ej: Carlos Martínez" required>
+                    </div>
+
+                    <div class="campo">
+                        <label class="campo__etiqueta" for="correo">Correo electrónico</label>
+                        <input class="campo__entrada" type="email" id="correo" name="correo" placeholder="correo@empresa.com" required>
+                    </div>
+
+                    <div class="campo">
+                        <label class="campo__etiqueta" for="area">Área jurídica</label>
+                        <select class="campo__entrada campo__entrada--select" id="area" name="area">
+                            <option value="" disabled selected>Seleccione un área</option>
+                            <option value="laboral">Derecho Laboral</option>
+                            <option value="comercial">Derecho Comercial</option>
+                            <option value="civil">Derecho Civil</option>
+                            <option value="familia">Derecho de Familia</option>
+                            <option value="empresarial">Asesoría Empresarial</option>
+                            <option value="contratos">Elaboración de Contratos</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label class="campo__etiqueta" for="urgencia">Nivel de urgencia</label>
+                        <select class="campo__entrada campo__entrada--select" id="urgencia" name="urgencia">
+                            <option value="" disabled selected>Seleccione la urgencia</option>
+                            <option value="normal">Normal — En los próximos días</option>
+                            <option value="prioritario">Prioritario — Esta semana</option>
+                            <option value="urgente">Urgente — Hoy mismo</option>
+                        </select>
+                    </div>
+
+                    <div class="campo campo--completo">
+                        <label class="campo__etiqueta" for="mensaje">Descripción del asunto</label>
+                        <textarea class="campo__entrada campo__entrada--textarea" id="mensaje" name="mensaje"
+                            placeholder="Describa brevemente su caso o consulta..." rows="5"></textarea>
+                    </div>
+
+                    <div class="campo campo--completo">
+                        <button type="button" class="boton-principal boton-principal--formulario">
+                            Solicitar Consulta
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!--! SECCIÓN 10: PIE DE PÁGINA
+        Grid de 4 columnas con proporciones distintas (2fr 1fr 1fr 1.5fr).
+        El ::before del footer agrega la línea dorada superior.
+        -->
+    <footer class="pie">
+
+        <div class="pie__cuadricula">
+
+            <div class="pie__marca">
+                <p class="pie__siglas">Mejía & Asociados</p>
+                <p class="pie__eslogan-footer">"Justicia con Precisión. Siempre."</p>
+                <p class="pie__descripcion">Especialistas legales en derecho corporativo y empresarial. Bogotá, Colombia.</p>
+            </div>
+
+            <div class="pie__navegacion">
+                <p class="pie__nav-titulo">Navegación</p>
+                <nav aria-label="Pie de página">
+                    <a class="pie__enlace" href="#inicio">Inicio</a>
+                    <a class="pie__enlace" href="#areas">Servicios</a>
+                    <a class="pie__enlace" href="#equipo">Equipo</a>
+                    <a class="pie__enlace" href="#conferencias">Conferencias</a>
+                    <a class="pie__enlace" href="#contacto">Contacto</a>
+                </nav>
+            </div>
+
+            <div class="pie__legal">
+                <p class="pie__nav-titulo">Legal</p>
+                <nav aria-label="Legal">
+                    <a class="pie__enlace" href="#">Política de privacidad</a>
+                    <a class="pie__enlace" href="#">Términos de servicio</a>
+                    <a class="pie__enlace" href="#">Código de ética</a>
+                </nav>
+            </div>
+
+            <div class="pie__contacto-rapido">
+                <p class="pie__nav-titulo">Contacto</p>
+                <p class="pie__dato">+57 300 123 4567</p>
+                <p class="pie__dato">contacto@mejia-asociados.com</p>
+                <p class="pie__dato">Bogotá, Colombia</p>
+            </div>
+
+        </div>
+
+        <div class="pie__linea-inferior">
+            <img id="pie__logo-banner"
+                src="./img/logomj.png"
+                alt="Mejía & Asociados">
+            <p class="pie__derechos">© 2026 Mejía & Asociados. Todos los derechos reservados. — Fundado en 2004</p>
+        </div>
+
+    </footer>
+
+
+</body>
+</html>
