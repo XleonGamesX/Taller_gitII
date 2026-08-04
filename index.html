@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directorio de usuarios</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <h1>Directorio de usuarios</h1>
+
+        <div class="menu">
+
+            <a class="activo" href="index.html">
+                Todos (<span id="cantidadUsuarios">0</span>)
+            </a>
+
+            <a href="favoritos.html">
+                ⭐ Favoritos (<span id="cantidadFavoritos">0</span>)
+            </a>
+
+        </div>
+
+        <hr>
+
+        <div class="barraBusqueda">
+
+            <input
+                type="text"
+                id="buscar"
+                placeholder="Buscar por nombre...">
+
+            <p>
+                <span id="usuariosMostrados">0</span>
+                usuarios
+            </p>
+
+        </div>
+
+        <div id="contenedorCards" class="cards">
+
+        </div>
+
+    </div>
+
+    <script src="js/index.js"></script>
+
+</body>
+
+</html>
